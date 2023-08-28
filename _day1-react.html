@@ -1,0 +1,58 @@
+
+<!-- O começo do react-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+    <!-- Carrega o React, React Dom e Babel -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> <!-- para que transforme jsx -> js  --> 
+
+</head>
+<body>
+    <div id="root"></div> <!-- pode ser qualquer nome de id, para criar o elemento html -->
+    <script type="text/babel"> //para escrever jscript no html, tem que ser escrito o <script> antes
+    
+    function Button(){ //function button serve para criar botões
+        
+        const [total, setTotal] = React.useState(35); //constante criada para definir um número inicial do total, com o .useState (35)
+
+        return <button onClick ={()=> setTotal(total+1)}> Adicionar {total} </button> // onClick = função para que ao clicar, adicione ao total final o total inicial +1, toda vez que clicar no botão
+    }
+
+    function App(){ //dentro da funcition App, ela vai renderizar na tela tudo o que estiver dentro dela
+        //<div> serve para abrir o html e dar espaço
+        return <div> 
+            <h1>Teste</h1>
+            <Button/> 
+          
+           
+            </div> // <Button/> = renderiza o botão na página
+            
+           
+    }
+
+    // Só é necessário fazer isso uma vez na aplicação, para criar o react
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container)
+    root.render(<App />); // o .render serve para renderizar na tela o que estamos fazendo
+
+
+</script> <!-- para escrever o jsx-->
+
+</body>
+</html>
+
+
+<!-- Toda função no HTML, tem que ter um return para retornar um react-->
+
+<script>
+function Button(){ //function button serve para criar botões
+        
+    return <button onClick ={()=> setTotal(total+1)}> Adicionar {total} </button> // onClick = função para que ao clicar, adicione ao total final o total inicial +1, toda vez que clicar no botão
+} </script>
