@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Carrega o React, React Dom e Babel -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id='meu-teste-react'> </div> <!-- 1) PASSO -->
+    <script type = "text/babel"> // 2) PASSO 
+
+
+    const Comprar = () => {   
+        
+        const [contador , setContador] = React.useState(1) //para o valor inicial começar em 1
+
+        function QuandoClicar () { 
+
+        return setContador(contador + 1)
+        }
+
+        return <div>
+            <p>Total:{contador}</p>
+            <p>Preço: R${contador * 250}</p>
+            <button onClick = {QuandoClicar}>Comprar</button>
+            </div>
+    }
+
+
+        ReactDOM.createRoot(document.getElementById('meu-teste-react')).render(<Comprar/>) //3) PASSO
+
+        //Esse é o básico para criar um elemento react
+
+    </script>
+    
+</body>
+</html>
