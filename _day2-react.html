@@ -1,0 +1,117 @@
+
+<!-- Toda função no HTML, tem que ter um return para retornar um react-->
+
+<script>
+    function Button(){ //function button serve para criar botões
+            
+        return <button onClick ={()=> setTotal(total+1)}> Adicionar {total} </button> // onClick = função para que ao clicar, adicione ao total final o total inicial +1, toda vez que clicar no botão
+    } </script>
+
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+    <!-- Carrega o React, React Dom e Babel -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> <!-- para que transforme jsx -> js  --> 
+
+</head>
+<body>
+    <div id="root"></div> 
+    <script type="text/babel"> 
+    
+   const Button = () => { 
+        return <button> Comprar </button>;
+        
+    }
+    const MainNav = ( ) => { // para criar um menu de navegação usamos o <nav>, para listar sem números ao lado usamos o <ul> = unlist, seguidos de <li> = list para listar
+        return <nav> 
+            <ul>
+            <li><a href="#"> Link </a></li>
+            </ul>
+            <Button/>
+             </nav>
+    }
+
+    const Produtos = () => {
+        const Produto1 = "Havaianas";
+        const Produto2 = "Iphone";
+        
+        return <div>
+            <h1>{Produto1} = R${Math.random().toFixed(3)}</h1>
+            <h1>{Produto2} = R$ {Math.random().toFixed(1)}</h1>
+
+            </div>
+            // utilizei o tofixed(), para dizer quantas casas preciso depois da virgula
+    }
+
+        
+    const Materiais = () => { 
+        const Material1 = "Borracha";
+        const Material2 = "Lápis";
+
+         function Clique (evento)  { 
+        console.log( `Comprou: ${event.target.innerText}`) 
+        //o target = serve para mostrar onde ele vai pegar
+        //innerText = serve para inserir um texto dentro do evento
+
+    }
+
+        return <div>
+            <h5 onClick = {Clique}>{Material1} = R$ {Math.random().toFixed(3)}</h5>
+            <h5 onClick = {Clique}>{Material2} = R$ {Math.random().toFixed(3)}</h5>
+
+    </div>
+    }
+
+        const Compras = () => { 
+
+            const [contar , setContar ] = React.useState(3); //ai o contar vai se iniciar em 3
+
+            function QuandoClicar (){ //e toda vez que eu clicar vai adicionar mais 4
+                setContar(contar + 4)
+
+            }
+
+            return <div> 
+                
+                <button onClick={QuandoClicar}>Comprar:{contar} </button>
+                <p>Total: {contar} </p>
+                <p>Preço: {contar} </p>
+                
+                </div>
+
+        }
+
+   // o primeiro dentro de um array sempre vai ser um item e o segundo uma função para aquele item 
+   //exemplo : [count , setCount]
+
+    function App(){ 
+        return <div> 
+            <MainNav/>
+            <Produtos/>
+            <Materiais />
+            <Compras />
+           
+            </div>
+            
+           
+    }
+
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container)
+    root.render(<App />); 
+
+</script> a
+
+</body>
+</html>
+
+<!-- Quando eu quero usar expressões jscript dentro de um HTML, preciso usar {}-->
